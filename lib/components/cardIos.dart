@@ -5,8 +5,10 @@ import 'package:transferencias_ios_flutter/models/transferencia.dart';
 class CardIos extends StatelessWidget {
 
   final Transferencia _transferencia;
+  final String _imagePath;
 
-  CardIos(this._transferencia);
+
+  CardIos(this._transferencia, this._imagePath);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CardIos extends StatelessWidget {
             width: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/mindful.jpg"),
+                image: AssetImage(_imagePath),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(12),
@@ -26,30 +28,14 @@ class CardIos extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.fromLTRB(15, 15, 0, 0),
               child: Text(
-                _transferencia.valor.toString(),
+                "Account: " + _transferencia.numeroConta.toString() + ". Value: " + _transferencia.valor.toString(),
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w600),
               ),
             ),
-          ),
-          onPressed: () {
-            showCupertinoDialog(
-              context: context,
-              builder: (BuildContext context) => CupertinoAlertDialog(
-                title: const Text('Card is clicked.'),
-                actions: <Widget>[
-                  CupertinoDialogAction(
-                    child: const Text('ok'),
-                    onPressed: () {
-                      Navigator.pop(context, 'ok');
-                    },
-                  ),
-                ],
-              ),
-            );
-          },
+          ), onPressed: () => print("Click"),
         ),
       );
   }

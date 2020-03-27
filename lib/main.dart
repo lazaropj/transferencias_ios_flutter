@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
+import 'package:transferencias_ios_flutter/screens/transferencia/formulario.dart';
 import 'package:transferencias_ios_flutter/screens/transferencia/lista.dart';
 
 
@@ -12,7 +12,10 @@ class BytebankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-        home: ListaTransferencias()
+      routes: {
+        '/': (_) => ListaTransferencias(),
+        'formulario': (_) => FormularioForm(),
+      },
     );
   }
 }
